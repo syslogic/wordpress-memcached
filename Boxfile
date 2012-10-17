@@ -7,7 +7,8 @@ web1:
     - zip
   shared_writable_dirs:
     - wp-content/uploads/
-    - wp-content/plugins/flexicache/_data/_storage
+    - wp-content/plugins/flexicache/_data/
+    - wp-content/plugins/flexicache/_data/_storage/
   after_build:
     - "php pagoda/wp-install.php"
     - "mv pagoda/wordpress/* ./"
