@@ -33,9 +33,6 @@ $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
 	$zip->extractTo($plugins);
 	$zip->close();
-	
-	/* create required directories */
-	if(!file_exists($plugins.'/flexicache/_data/config.ser')){touch($plugins.'/flexicache/_data/config.ser');}
 }
 
 /* remove useless files */
