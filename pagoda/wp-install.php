@@ -1,18 +1,18 @@
 <?php
 /*
 	WordPress with Memcached Object Cache
-	Installer for Pagoda Box v1.05
+	cURL Installer for Pagoda Box v1.05
 	Copyright 2012 by Martin Zeitler
 	http://codefx.biz/contact
 */
 
 /* the environment */
 $fn1='latest.zip';
-$src1='http://wordpress.org/'.$fn1;
 $fn2='memcached.2.0.2.zip';
+$src1='http://wordpress.org/'.$fn1;
 $src2='http://downloads.wordpress.org/plugin/'.$fn2;
 $base_dir = str_replace('/pagoda','', dirname(__FILE__));
-$v_info=dirname(__FILE__).'/wordpress/wp-includes/version.php';
+$version_info=dirname(__FILE__).'/wordpress/wp-includes/version.php';
 $dst1=$base_dir.'/pagoda/'.$fn1;
 $dst2=$base_dir.'/pagoda/'.$fn2;
 
@@ -27,7 +27,7 @@ if($zip->open($dst1) === TRUE) {
 	$zip->close();
 }
 
-/* unzip the Memcached Object Cache plugin */
+/* unzip the Memcached plugin */
 $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
 	$zip->extractTo(dirname(__FILE__).'/wordpress/wp-content/plugins');
@@ -38,21 +38,9 @@ if($zip->open($dst2) === TRUE) {
 unlink(dirname(__FILE__).'/wordpress/wp-content/plugins/hello.php');
 
 /* retrieve version number */
-if(file_exists($v_info)){
-	require_once($v_info);
+if(file_exists($version_info)){
+	require_once($version_info);
 	echo 'WordPress v'.$wp_version.' with Memcached v2.0.2 will now be deployed.';
-}
-
-function format_size($size=0) {
-	if($size < 1024){
-		return $size.'b';
-	}
-	elseif($size < 1048576){
-		return round($size/1024,2).'kb';
-	}
-	else {
-		return round($size/1048576,2).'mb';
-	}
 }
 
 function retrieve($src, $dst){
@@ -71,5 +59,17 @@ function retrieve($src, $dst){
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
 	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024/1024),2))."GBps.\n";
+}
+
+function format_size($size=0) {
+	if($size < 1024){
+		return $size.'b';
+	}
+	elseif($size < 1048576){
+		return round($size/1024,2).'kb';
+	}
+	else {
+		return round($size/1048576,2).'mb';
+	}
 }
 ?>
