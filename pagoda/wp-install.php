@@ -35,6 +35,12 @@ if($zip->open($dst2) === TRUE) {
 	$zip->close();
 }
 
+/* create required sub-directories */
+if(!is_dir($plugins.'/flexicache')){
+	if(!is_dir($plugins.'/flexicache/_data')){mkdir($plugins.'/flexicache/_data');}
+	if(!is_dir($plugins.'/flexicache/_data/_storage')){mkdir($plugins.'/flexicache/_data/_storage');}
+}
+
 /* remove useless files */
 unlink($plugins.'/hello.php');
 
