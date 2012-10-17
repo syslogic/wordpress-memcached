@@ -18,7 +18,7 @@ $dst2=$base_dir.'/pagoda/'.$fn2;
 
 /* fetch the packages */
 retrieve($src1, $dst1);
-retrieve($src1, $dst1);
+retrieve($src2, $dst2);
 
 /* unzip the WordPress package */
 $zip = new ZipArchive;
@@ -30,10 +30,8 @@ if($zip->open($dst1) === TRUE) {
 /* unzip the Memcached Object Cache plugin */
 $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
-	$zip->extractTo(dirname(__FILE__));
+	$zip->extractTo(dirname(__FILE__).'/wordpress/wp-content/plugins');
 	$zip->close();
-	copy(dirname(__FILE__).'/memcached/object-cache.php', dirname(__FILE__).'/wordpress/wp-content/object-cache.php');
-	copy(dirname(__FILE__).'/memcached/readme.txt', dirname(__FILE__).'/wordpress/wp-content/readme.txt');
 }
 
 /* retrieve version number */
