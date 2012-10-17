@@ -34,7 +34,7 @@ if($zip->open($dst2) === TRUE) {
 	$zip->extractTo($plugins);
 	$zip->close();
 	mkdir($plugins.'/flexicache/_data');
-	mkdir($plugins.'flexicache/_data/_storage');
+	mkdir($plugins.'/flexicache/_data/_storage');
 }
 
 /* remove useless files */
