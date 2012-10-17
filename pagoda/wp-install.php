@@ -1,6 +1,6 @@
 <?php
 /*
-	WordPress with Memcached Object Cache
+	WordPress Latest with FlexiCache
 	cURL Installer for Pagoda Box v1.05
 	Copyright 2012 by Martin Zeitler
 	http://codefx.biz/contact
@@ -32,6 +32,7 @@ $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
 	$zip->extractTo(dirname(__FILE__).'/wordpress/wp-content/plugins');
 	$zip->close();
+	mkdir(dirname(__FILE__).'/wp-content/plugins/flexicache/_data');
 }
 
 /* remove useless files */
