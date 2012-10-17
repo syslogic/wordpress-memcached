@@ -33,10 +33,6 @@ $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
 	$zip->extractTo($plugins);
 	$zip->close();
-	
-	/* create required directories */
-	if(!is_dir($plugins.'/flexicache/_data')){mkdir($plugins.'/flexicache/_data');}
-	if(!is_dir($plugins.'/flexicache/_data/_storage')){mkdir($plugins.'/flexicache/_data/_storage');}
 }
 
 /* remove useless files */
