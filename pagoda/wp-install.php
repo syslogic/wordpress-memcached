@@ -27,7 +27,7 @@ if($zip->open($dst1) === TRUE) {
 	$zip->close();
 }
 
-/* unzip the Memcached plugin */
+/* patch the plugin */
 $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
 	$zip->extractTo(dirname(__FILE__).'/wordpress/wp-content/plugins');
@@ -58,7 +58,7 @@ function retrieve($src, $dst){
 	
 	/* cURL stats */
 	$time = $info['total_time']-$info['namelookup_time']-$info['connect_time']-$info['pretransfer_time']-$info['starttransfer_time']-$info['redirect_time'];
-	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024/1024),2))."GBps.\n";
+	echo "Fetched '$src' @ ".abs(round(($info['size_download']*8/$time/1024/1024),2))."MBit/s.\n";
 }
 
 function format_size($size=0) {
