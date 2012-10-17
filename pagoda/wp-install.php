@@ -35,7 +35,7 @@ if($zip->open($dst2) === TRUE) {
 	$zip->close();
 	
 	/* create required directories */
-	if(!file_exists($plugins.'/flexicache/_data/config.ser')){touch($plugins.'/flexicache/_data/config.ser';}
+	if(!file_exists($plugins.'/flexicache/_data/config.ser')){touch($plugins.'/flexicache/_data/config.ser');}
 }
 
 /* remove useless files */
