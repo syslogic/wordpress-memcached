@@ -80,6 +80,9 @@ define('WPLANG', '');
  */
 define('WP_DEBUG', false);
 
+/* Memcache Configuration */
+$memcached_servers = array('default' => array('tunnel.pagodabox.com:11211'));
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */

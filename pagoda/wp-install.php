@@ -30,14 +30,16 @@ if($zip->open($dst1) === TRUE) {
 /* unzip the Memcached Object Cache plugin */
 $zip = new ZipArchive;
 if($zip->open($dst2) === TRUE) {
-	$zip->extractTo(dirname(__FILE__).'/wordpress/wp-content/plugins');
+	$zip->extractTo(dirname(__FILE__));
 	$zip->close();
+	copy(dirname(__FILE__).'/memcached/object-cache.php', dirname(__FILE__).'/wordpress/wp-content/object-cache.php');
+	copy(dirname(__FILE__).'/memcached/readme.txt', dirname(__FILE__).'/wordpress/wp-content/readme.txt');
 }
 
 /* retrieve version number */
 if(file_exists($v_info)){
 	require_once($v_info);
-	echo 'WordPress v'.$wp_version.' with Memcached Object Cache v2.0.2 will now be deployed.';
+	echo 'WordPress v'.$wp_version.' with Memcached v2.0.2 will now be deployed.';
 }
 
 function format_size($size=0) {
