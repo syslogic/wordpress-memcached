@@ -34,6 +34,9 @@ if($zip->open($dst2) === TRUE) {
 	$zip->close();
 }
 
+/* remove useless files */
+unlink(dirname(__FILE__).'/wordpress/wp-content/plugins/hello.php');
+
 /* retrieve version number */
 if(file_exists($v_info)){
 	require_once($v_info);
