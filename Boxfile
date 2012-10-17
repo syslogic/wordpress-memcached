@@ -13,6 +13,7 @@ web1:
     - "mv pagoda/wordpress/* ./"
     - "mv pagoda/wp-config.php wp-config.php"
     - "rm -R pagoda"
+    - "touch wp-content/plugins/flexicache/_data/config.ser"
 db1:
   name: wp-db
 cache1:
