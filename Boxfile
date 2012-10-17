@@ -1,0 +1,20 @@
+web1:
+  name: wp-web
+  php_extensions:
+    - memcache
+    - mysql
+    - curl
+    - zip
+  shared_writable_dirs:
+    - wp-content/uploads/
+    - wp-content/plugins/flexicache/_data/
+  after_build:
+    - "php pagoda/wp-install.php"
+    - "mv pagoda/wordpress/* ./"
+    - "mv pagoda/wp-config.php wp-config.php"
+    - "rm -R pagoda"
+db1:
+  name: wp-db
+cache1:
+  name: wp-cache
+  type: memcached
