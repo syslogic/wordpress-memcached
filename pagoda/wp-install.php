@@ -8,7 +8,7 @@
 
 /* the environment */
 $fn1='latest.zip';
-$fn2='memcached.2.0.2.zip';
+$fn2='flexicache.1.2.4.3.zip';
 $src1='http://wordpress.org/'.$fn1;
 $src2='http://downloads.wordpress.org/plugin/'.$fn2;
 $base_dir = str_replace('/pagoda','', dirname(__FILE__));
@@ -40,7 +40,7 @@ unlink(dirname(__FILE__).'/wordpress/wp-content/plugins/hello.php');
 /* retrieve version number */
 if(file_exists($version_info)){
 	require_once($version_info);
-	echo 'WordPress v'.$wp_version.' with Memcached v2.0.2 will now be deployed.';
+	echo 'WordPress v'.$wp_version.' with FlexiCache v1.2.4.3 will now be deployed.';
 }
 
 function retrieve($src, $dst){
