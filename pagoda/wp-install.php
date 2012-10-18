@@ -12,6 +12,7 @@ $fn2='flexicache.1.2.4.3.zip';
 $src1='http://wordpress.org/'.$fn1;
 $src2='http://downloads.wordpress.org/plugin/'.$fn2;
 $base_dir = str_replace('/pagoda','', dirname(__FILE__));
+$hostname=$_SERVER['APP_NAME'].'.pagodabox.com';
 $version_info=dirname(__FILE__).'/wordpress/wp-includes/version.php';
 $plugins=dirname(__FILE__).'/wordpress/wp-content/plugins';
 $dst1=$base_dir.'/pagoda/'.$fn1;
@@ -48,10 +49,8 @@ copy(dirname(__FILE__).'/wp-config.php', dirname(__FILE__).'/wordpress/wp-config
 
 /* patching FlexiCache's config.ser with the actual hostname */
 $config = file_get_contents(dirname(__FILE__).'/config.ser');
-preg_replace('/HTTP_HOST/i', $_SERVER['HTTP_HOST'], $config);
+preg_replace('/HTTP_HOST/i', $hostname, $config);
 file_put_contents(dirname(__FILE__).'/config.ser', $config);
-
-echo print_r($_SERVER, true);
 
 /* retrieve version number */
 if(file_exists($version_info)){
