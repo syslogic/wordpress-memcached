@@ -13,7 +13,7 @@ web1:
     - "mv pagoda/wordpress/* ./"
     - "rm -R pagoda/wordpress"
   after_deploy:
-    - "mv pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
+    - "cp pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
 db1:
   name: wp-db
 cache1:
