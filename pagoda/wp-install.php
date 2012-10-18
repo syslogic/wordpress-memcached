@@ -38,15 +38,13 @@ if($zip->open($dst2) === TRUE) {
 /* fixing the directory structure (required to mount the shared directory) */
 if(file_exists($plugins.'/flexicache/_data/.htaccess')){unlink($plugins.'/flexicache/_data/.htaccess');}
 if(is_dir($plugins.'/flexicache/_data/_storage')){rmdir($plugins.'/flexicache/_data/_storage');}
-if(is_dir($plugins.'/flexicache/_data')){rmdir($plugins.'/flexicache/_data');}
 
 /* removing some useless files */
 unlink(dirname(__FILE__).'/wordpress/wp-config-sample.php');
 unlink($plugins.'/hello.php');
 
-
-/* [TODO] unique salts need to be added wp-config.php */
-
+/* [TODO] unique salts would need to be added wp-config.php */
+copy(dirname(__FILE__).'/wp-config.php', dirname(__FILE__).'/wordpress/wp-config.php');
 
 /* retrieve version number */
 if(file_exists($version_info)){
