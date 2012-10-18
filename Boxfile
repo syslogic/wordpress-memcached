@@ -12,6 +12,7 @@ web1:
     - "php pagoda/wp-install.php"
     - "mv pagoda/wordpress/* ./"
     - "rm -R pagoda/wordpress"
+    - "rm pagoda/wp-install.php pagoda/wp-config.php"
   after_deploy:
     - "cp pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
     - "mkdir wp-content/plugins/flexicache/_data/_storage"
