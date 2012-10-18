@@ -19,8 +19,8 @@ $dst1=$base_dir.'/pagoda/'.$fn1;
 $dst2=$base_dir.'/pagoda/'.$fn2;
 
 /* fetch the packages */
-retrieve($src1, $dst1);
-retrieve($src2, $dst2);
+wget($src1, $dst1);
+wget($src2, $dst2);
 
 /* extract the main package */
 $zip = new ZipArchive;
@@ -47,10 +47,10 @@ unlink($plugins.'/hello.php');
 /* [TODO] unique salts would need to be added wp-config.php */
 copy(dirname(__FILE__).'/wp-config.php', dirname(__FILE__).'/wordpress/wp-config.php');
 
-/* patching FlexiCache's config.ser with the actual hostname */
-$config = file_get_contents(dirname(__FILE__).'/config.ser');
-preg_replace('/HTTP_HOST/i', $hostname, $config);
-file_put_contents(dirname(__FILE__).'/config.ser', $config);
+/* [TODO] patching FlexiCache's config.ser with the actual hostname */
+// $config = file_get_contents(dirname(__FILE__).'/config.ser');
+// preg_replace('/HTTP_HOST/i', $hostname, $config);
+// file_put_contents(dirname(__FILE__).'/config.ser', $config);
 
 /* retrieve version number */
 if(file_exists($version_info)){
@@ -58,7 +58,7 @@ if(file_exists($version_info)){
 	echo 'WordPress v'.$wp_version.' with FlexiCache v1.2.4.3 will now be deployed.';
 }
 
-function retrieve($src, $dst){
+function wget($src, $dst){
 	$fp = fopen($dst, 'w');
 	$curl = curl_init();
 	$opt = array(CURLOPT_URL => $src, CURLOPT_HEADER => false, CURLOPT_FILE => $fp);
