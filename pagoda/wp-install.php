@@ -35,14 +35,18 @@ if($zip->open($dst2) === TRUE) {
 	$zip->close();
 }
 
-/* create required sub-directories */
-if(is_dir($plugins.'/flexicache')){
-	if(!is_dir($plugins.'/flexicache/_data')){mkdir($plugins.'/flexicache/_data');}
-	if(!is_dir($plugins.'/flexicache/_data/_storage')){mkdir($plugins.'/flexicache/_data/_storage');}
-}
+/* fixing the directory structure (required to mount the shared directory) */
+if(file_exists($plugins.'/flexicache/_data/.htaccess')){unlink($plugins.'/flexicache/_data/.htaccess');}
+if(is_dir($plugins.'/flexicache/_data/_storage')){unlink($plugins.'/flexicache/_data/_storage');}
+if(is_dir($plugins.'/flexicache/_data')){unlink($plugins.'/flexicache/_data');}
 
-/* remove useless files */
+/* removing some useless files */
+unlink(dirname(__FILE__).'/wordpress/wp-config-sample.php');
 unlink($plugins.'/hello.php');
+
+
+/* [TODO] unique salts need to be added wp-config.php */
+
 
 /* retrieve version number */
 if(file_exists($version_info)){

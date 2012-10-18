@@ -7,11 +7,12 @@ web1:
     - zip
   shared_writable_dirs:
     - wp-content/uploads/
-    - wp-content/plugins/flexicache/_data/_storage/
+    - wp-content/plugins/flexicache/_data/
   after_build:
     - "php pagoda/wp-install.php"
     - "mv pagoda/wordpress/* ./"
     - "mv pagoda/wp-config.php wp-config.php"
+    - "mv pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
     - "rm -R pagoda"
 db1:
   name: wp-db
