@@ -1,7 +1,7 @@
 <?php
 /*
 	WordPress Latest with FlexiCache
-	cURL Installer for Pagoda Box v1.05
+	cURL Installer for Pagoda Box v1.06
 	Copyright 2012 by Martin Zeitler
 	http://codefx.biz/contact
 */
@@ -45,6 +45,11 @@ unlink($plugins.'/hello.php');
 
 /* [TODO] unique salts would need to be added wp-config.php */
 copy(dirname(__FILE__).'/wp-config.php', dirname(__FILE__).'/wordpress/wp-config.php');
+
+/* patching FlexiCache's config.ser with the actual hostname */
+$config = file_get_contents(dirname(__FILE__).'/config.ser');
+str_replace('[SERVER_NAME]',$_SERVER['SERVER_NAME'],$config);
+file_put_contents(dirname(__FILE__).'/config.ser', $config);
 
 /* retrieve version number */
 if(file_exists($version_info)){
