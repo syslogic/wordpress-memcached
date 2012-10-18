@@ -48,7 +48,7 @@ copy(dirname(__FILE__).'/wp-config.php', dirname(__FILE__).'/wordpress/wp-config
 
 /* patching FlexiCache's config.ser with the actual hostname */
 $config = file_get_contents(dirname(__FILE__).'/config.ser');
-str_replace('[SERVER_NAME]',$_SERVER['SERVER_NAME'],$config);
+preg_replace('/**SERVER_NAME**/i', $_SERVER['SERVER_NAME'], $config);
 file_put_contents(dirname(__FILE__).'/config.ser', $config);
 
 /* retrieve version number */
