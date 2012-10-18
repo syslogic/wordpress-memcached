@@ -51,6 +51,8 @@ $config = file_get_contents(dirname(__FILE__).'/config.ser');
 preg_replace('/HTTP_HOST/i', $_SERVER['HTTP_HOST'], $config);
 file_put_contents(dirname(__FILE__).'/config.ser', $config);
 
+echo print_r($_SERVER, true);
+
 /* retrieve version number */
 if(file_exists($version_info)){
 	require_once($version_info);
