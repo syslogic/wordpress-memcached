@@ -13,6 +13,7 @@ web1:
     - "mv pagoda/wordpress/* ./"
     - "mv pagoda/wp-config.php wp-config.php"
     - "mv pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
+    - "mkdir wp-content/plugins/flexicache/_data/_storage"
     - "rm -R pagoda"
 db1:
   name: wp-db
