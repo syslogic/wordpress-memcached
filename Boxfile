@@ -14,7 +14,8 @@ web1:
     - "rm -R pagoda/wordpress"
     - "rm pagoda/wp-install.php pagoda/wp-config.php"
   after_deploy:
-    - "cp pagoda/flexicache.htaccess wp-content/plugins/flexicache/_data/.htaccess"
+    - "cp pagoda/.htaccess wp-content/plugins/flexicache/_data/.htaccess"
+    - "cp pagoda/config.ser wp-content/plugins/flexicache/_data/config.ser"
     - "mkdir wp-content/plugins/flexicache/_data/_storage"
 db1:
   name: wp-db
